@@ -44,10 +44,9 @@ const clerk = clerkMiddleware(async (auth, req) => {
 export default createMiddleware(aj, clerk);
 
 export const config = {
+  runtime: "nodejs", // run as server-side, not Edge
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
     "/(api|trpc)(.*)",
   ],
 };
